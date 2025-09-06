@@ -1,0 +1,29 @@
+# CalculaPrimos.py
+
+import math
+
+def is_prime(n: int) -> bool:
+    if n < 2:
+        return False
+    if n % 2 == 0:
+        return n == 2
+    r = int(math.isqrt(n))
+    for d in range(3, r + 1, 2):
+        if n % d == 0:
+            return False
+    return True
+
+def count_primes(limit: int) -> int:
+    count = 0
+    for x in range(2, limit + 1):
+        if is_prime(x):
+            count += 1
+    return count
+
+def main():
+    limit = 10000000
+    total = count_primes(limit)
+    print(f"Primos: {total}")
+
+if __name__ == "__main__":
+    main()
